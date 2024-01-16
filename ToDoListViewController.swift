@@ -11,7 +11,8 @@ class ToDoListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = UIColor.black
+        title = "Lista de Hábitos"
     }
 
 

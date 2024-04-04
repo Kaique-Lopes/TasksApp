@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Estrutura de visualizacao de dados
+// MARK: - TaskViewModel : Estrutura de visualizacao de dados
 
 struct TaskViewModel {
     private var task: Task

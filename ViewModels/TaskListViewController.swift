@@ -40,4 +40,12 @@ class TaskListViewController {
     func task(by index: Int) -> TaskViewModel {
         tasks[index]
     }
+    
+    func toggleCompleted(task: TaskViewModel) {
+        getAll()
+    }
+    
+    func deleteItem(task: TaskViewModel) {
+        getAll()
+    }
 }

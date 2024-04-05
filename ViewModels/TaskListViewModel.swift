@@ -1,5 +1,5 @@
 //
-//  TaskListViewController.swift
+//  TaskListViewModel.swift
 //  TasksApp
 //
 //  Created by Kaique Lopes de Oliveira on 04/04/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TaskListViewController {
+class TaskListViewModel {
     var tasks = [TaskViewModel]()
     
     init() {

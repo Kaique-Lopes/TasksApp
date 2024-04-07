@@ -37,4 +37,20 @@ class CoreDataManager {
             }
         }
     }
+    
+    func getAll() -> [Task] {
+        var tasks = [Task]()
+        
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        let sortByDueDate = NSSortDescriptor(key: "dueOn", ascending: true)
+        fetchRequest.sortDescriptors = [sortByDueDate]
+        
+        do {
+            tasks = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+        return tasks
+     }
 }

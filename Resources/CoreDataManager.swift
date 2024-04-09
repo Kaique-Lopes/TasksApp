@@ -80,4 +80,18 @@ class CoreDataManager {
             print("Erorr toggle state: \(error.userInfo), \(error.localizedDescription)")
         }
     }
+    
+    func deleteTask(id: UUID) {
+        let predicated = NSPredicate(format: "id=%@", id.uuidString)
+
+        do {
+            let fetchedTasks = try context.fetch(fetchRequest)
+            for task in fetchedTasks {
+                context.delete(task)
+            }
+            saveContext()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }

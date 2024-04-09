@@ -10,7 +10,7 @@ import CoreData
 
 class CoreDataManager {
     static let shared = CoreDataManager()
-    
+    let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
     private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -41,7 +41,6 @@ class CoreDataManager {
     func getAll() -> [Task] {
         var tasks = [Task]()
         
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         let sortByDueDate = NSSortDescriptor(key: "dueOn", ascending: true)
         fetchRequest.sortDescriptors = [sortByDueDate]
         
@@ -64,5 +63,21 @@ class CoreDataManager {
         task.completedOn = dueOn.advanced(by: 10000)
         
         saveContext()
+    }
+    
+    func toggleCompleted(id: UUID) {
+        let predicated = NSPredicate(format: "id=%@", id.uuidString)
+        
+        do {
+            if let fetchedTask = try context.fetch(fetchRequest).first(where: {$0.id == id}) {
+                fetchedTask.completed = !fetchedTask.completed
+                if fetchedTask.completed {
+                    fetchedTask.completedOn = Date()
+                }
+            }
+            saveContext()
+        } catch let error as NSError {
+            print("Erorr toggle state: \(error.userInfo), \(error.localizedDescription)")
+        }
     }
 }

@@ -53,4 +53,16 @@ class CoreDataManager {
         
         return tasks
      }
+    
+    func addNewTask(name: String, dueOn: Date) {
+        let task = Task(context: context)
+        task.name = name
+        task.dueOn = dueOn
+        
+        task.id = UUID()
+        task.completed = false
+        task.completedOn = dueOn.advanced(by: 10000)
+        
+        saveContext()
+    }
 }

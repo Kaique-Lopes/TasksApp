@@ -45,7 +45,26 @@ class ToDoListViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemBackground
+        addViews()
+        configConstraints()
+    }
+    
+    // MARK: - UI Configuration
+    
+    func addViews() {
+        [addNewButton, getTasksButton, toggleCompletedButton, deleteTasksButton].forEach { control in
+            view.addSubview(control)
+        }
+    }
+    
+    func configConstraints() {
+        NSLayoutConstraint.activate([
+            addNewButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            addNewButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            addNewButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16)
+
+
+        ])
     }
     
     // MARK: - Action Buttons

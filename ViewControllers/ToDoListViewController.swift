@@ -43,8 +43,11 @@ class ToDoListViewController: UIViewController {
         button.addTarget(self, action: #selector(deletedTask(sender: )), for: .touchUpInside)
         return button
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.blue
+        title = "Kaique"
         addViews()
         configConstraints()
     }
@@ -61,8 +64,21 @@ class ToDoListViewController: UIViewController {
         NSLayoutConstraint.activate([
             addNewButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             addNewButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            addNewButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16)
+            addNewButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            
+            getTasksButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            getTasksButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            getTasksButton.topAnchor.constraint(equalTo: addNewButton.bottomAnchor, constant: 8),
+            
+            toggleCompletedButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            toggleCompletedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            toggleCompletedButton.topAnchor.constraint(equalTo: getTasksButton.bottomAnchor, constant: 8),
+            
+            deleteTasksButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            deleteTasksButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            deleteTasksButton.topAnchor.constraint(equalTo: toggleCompletedButton.bottomAnchor, constant: 8),
 
+            
 
         ])
     }

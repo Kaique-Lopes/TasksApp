@@ -34,7 +34,24 @@ class ToDoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        setupViews()
+        setupViews()
+    }
+    
+    // MARK: - UI Configs
+    
+    func setupViews() {
+        selectionStyle = .none
+        [taskNameLabel, dueOrCompleteLabel, completeLabel].forEach { views in
+            contentView.addSubview(views)
+        }
+        
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            
+        ])
     }
     
     required init?(coder: NSCoder) {

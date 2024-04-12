@@ -29,7 +29,7 @@ class AddNewTaskViewController: UIViewController {
     lazy var dueOnLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Due On"
+        label.text = "Data de Vencimento"
         return label
     }()
     

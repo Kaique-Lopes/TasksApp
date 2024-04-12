@@ -10,8 +10,17 @@ import CoreData
 
 
 class ToDoListViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.systemBackground
+        title = "Teste"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewTask))
+    }
+    
+    @objc
+    func addNewTask() {
+        navigationController?.pushViewController(AddNewTaskViewController(), animated: true)
     }
 }
 /*

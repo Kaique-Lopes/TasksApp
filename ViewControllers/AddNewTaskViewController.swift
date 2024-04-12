@@ -76,5 +76,15 @@ class AddNewTaskViewController: UIViewController {
     }
     
     @objc
-    func saveTask() {}
+    func saveTask() {
+        guard let taskname = taskNameTextField.text, !taskname.isEmpty else {
+            let alert = UIAlertController(title: "Error", message: "Nome da tarefa Vazia", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        return
+        }
+        let dueOn = dueOnDatePicker.date
+        viewModel.addTask(name: taskname, dueOn: dueOn)
+        navigationController?.popViewController(animated: true)
+    }
 }

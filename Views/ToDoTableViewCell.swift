@@ -50,7 +50,19 @@ class ToDoTableViewCell: UITableViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            taskNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            taskNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            taskNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
+            dueOrCompleteLabel.topAnchor.constraint(equalTo: taskNameLabel.bottomAnchor, constant: 8),
+            dueOrCompleteLabel.leadingAnchor.constraint(equalTo: taskNameLabel.leadingAnchor),
+            dueOrCompleteLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+
+            completeLabel.topAnchor.constraint(equalTo: taskNameLabel.bottomAnchor, constant: 16),
+            completeLabel.trailingAnchor.constraint(equalTo: taskNameLabel.trailingAnchor),
+            completeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            
+            contentView.bottomAnchor.constraint(equalTo: taskNameLabel.bottomAnchor, constant: 8)
         ])
     }
     

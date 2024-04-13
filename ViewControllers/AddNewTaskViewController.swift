@@ -37,6 +37,7 @@ class AddNewTaskViewController: UIViewController {
         let date = UIDatePicker()
         date.translatesAutoresizingMaskIntoConstraints = false
         date.datePickerMode = .date
+        date.locale = Locale(identifier: "pt_BR")
         date.minimumDate = Date()
         return date
     }()
@@ -49,7 +50,7 @@ class AddNewTaskViewController: UIViewController {
     func setupViews() {
         view.backgroundColor = .white
         title = "Adicionar Tarefa"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTask))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveTask))
         
         [taskNameLabel, taskNameTextField, dueOnLabel, dueOnDatePicker].forEach { views in
             view.addSubview(views)

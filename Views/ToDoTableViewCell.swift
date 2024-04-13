@@ -69,4 +69,23 @@ class ToDoTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configure(with task: TaskViewModel) {
+        let attributedString = NSMutableAttributedString(string: task.name)
+        
+        if task.completed {
+            attributedString.addAttribute(NSAttributedString.Key .strikethroughStyle, value:  NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributedString.length))
+            taskNameLabel.font = UIFont.systemFont(ofSize: 16)
+        } else {
+            taskNameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        }
+        
+        taskNameLabel.attributedText = attributedString
+        
+        dueOrCompleteLabel.text = task.completed ? "Tarefa Completa \(task.completedOn?.formatted(date: .abbreviated, time: .omitted))" :
+        "Vencem em: \(task.dueOn.formatted(date: .abbreviated, time: .omitted))"
+        
+        completeLabel.text = task.completed ? "Tarefa Completa" : "Tarefa Incompleta"
+        completeLabel.textColor = task.completed ? .green : .red
+    }
 }

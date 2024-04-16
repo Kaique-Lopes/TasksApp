@@ -23,4 +23,49 @@ class SummaryTableViewCell: UITableViewCell {
         return stackView
     }()
 
+    lazy var completedLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
+    lazy var incompletedLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView() {
+        selectionStyle = .none
+        
+        stackView.addArrangedSubview(completedLabel)
+        stackView.addArrangedSubview(incompletedLabel)
+        
+        contentView.addSubview(stackView)
+        
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -8)
+        ])
+    }
+    
+    func configure(incompleted: String, completed: String) {
+        incompletedLabel.text = "Completed \(completed)"
+        completedLabel.text = "Incompleted \(incompleted)"
+    }
 }

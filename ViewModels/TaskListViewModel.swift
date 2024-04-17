@@ -42,6 +42,7 @@ class TaskListViewModel {
     }
     
     func toggleCompleted(task: TaskViewModel) {
+        CoreDataManager.shared.toggleCompleted(id: task.id)
         getAll()
     }
     

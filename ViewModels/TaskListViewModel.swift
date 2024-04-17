@@ -19,7 +19,7 @@ class TaskListViewModel {
     }
     
     func getAll() {
-        // data from coreData and populate tasks
+        tasks = CoreDataManager.shared.getAll().map(TaskViewModel.init)
     }
     
     func numberOfRows(by section: Int) -> Int {

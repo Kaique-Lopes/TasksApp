@@ -11,6 +11,8 @@ import CoreData
 
 class ToDoListViewController: UIViewController {
     
+    var viewModel = TaskListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground

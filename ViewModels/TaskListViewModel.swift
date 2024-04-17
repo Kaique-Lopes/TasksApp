@@ -47,6 +47,7 @@ class TaskListViewModel {
     }
     
     func deleteItem(task: TaskViewModel) {
+        CoreDataManager.shared.deleteTask(id: task.id)
         getAll()
     }
 }

@@ -36,12 +36,35 @@ class ToDoListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground
         title = "Minhas Tarefas"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewTask))
+        configTableView()
+        configCelebrationAnimationView()
     }
     
     @objc
     func addNewTask() {
         navigationController?.pushViewController(AddNewTaskViewController(), animated: true)
+    }
+    
+    func configTableView() {
+        view.addSubview(tableview)
+        NSLayoutConstraint.activate([
+            tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableview.topAnchor.constraint(equalTo: view.topAnchor),
+            tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func configCelebrationAnimationView() {
+        view.addSubview(celebrationView)
+        NSLayoutConstraint.activate([
+            celebrationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            celebrationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            celebrationView.topAnchor.constraint(equalTo: view.topAnchor),
+            celebrationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }
 /*

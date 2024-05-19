@@ -18,7 +18,18 @@ class ToDoListViewController: UIViewController {
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.delegate = self
         tb.dataSource = self
+        tb.register(ToDoTableViewCell.self, forCellReuseIdentifier: "TodoCell")
+        tb.register(SummaryTableViewCell.self, forCellReuseIdentifier: "SummaryCell")
+        tb.estimatedRowHeight = 200
+        tb.rowHeight = UITableView.automaticDimension
         return tb
+    }()
+    
+    lazy var celebrationView: CelebrationAnimationView = {
+        let celebration = CelebrationAnimationView(fileName: "Animation1713317090727")
+        celebration.translatesAutoresizingMaskIntoConstraints = false
+        celebration.isHidden = true
+        return celebration
     }()
     
     override func viewDidLoad() {

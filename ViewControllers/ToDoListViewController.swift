@@ -13,6 +13,14 @@ class ToDoListViewController: UIViewController {
     
     var viewModel = TaskListViewModel()
     
+    lazy var tableview: UITableView = {
+        let tb = UITableView()
+        tb.translatesAutoresizingMaskIntoConstraints = false
+        tb.delegate = self
+        tb.dataSource = self
+        return tb
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground

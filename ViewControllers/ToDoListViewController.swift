@@ -42,6 +42,13 @@ class ToDoListViewController: UIViewController {
         configCelebrationAnimationView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.getAll()
+        tableview.reloadData()
+        
+    }
+    
     @objc
     func addNewTask() {
         navigationController?.pushViewController(AddNewTaskViewController(), animated: true)
